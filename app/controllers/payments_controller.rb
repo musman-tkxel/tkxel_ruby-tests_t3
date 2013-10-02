@@ -61,6 +61,18 @@ class PaymentsController < ApplicationController
     end
   end
 
+  #Customize Methods
+
+  def get_object_from_service
+    if !(Payment.update_transaction params[:payment])
+      Payment.transaction do
+        @payment = Payment.new(payment_params)
+        @payment.save
+      end
+    end
+    redirect_to action: 'index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
@@ -71,4 +83,5 @@ class PaymentsController < ApplicationController
     def payment_params
       params.require(:payment).permit(:amount, :line_item_id, :service_id)
     end
+
 end
