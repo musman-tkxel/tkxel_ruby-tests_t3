@@ -9,6 +9,7 @@ T3::Application.routes.draw do
 
   # Example of regular route:
   match  '/get_object_from_service' ,    to: 'payments#get_object_from_service',    via: 'post'
+  match  '/testing' ,    to: 'payments#testing',    via: 'post'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
